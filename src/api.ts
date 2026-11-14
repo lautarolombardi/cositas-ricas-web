@@ -13,7 +13,11 @@ export interface Product {
   category: Category
 }
 
-const API_URL = import.meta.env.VITE_API_URL ?? '/api'
+const API_URL = import.meta.env.VITE_API_URL
+
+if (!API_URL) {
+  throw new Error('VITE_API_URL is not set')
+}
 
 async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
   const response = await fetch(`${API_URL}${path}`, { signal })
