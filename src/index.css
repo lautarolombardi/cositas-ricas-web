@@ -1,0 +1,90 @@
+:root {
+  --bg: #f8e3e2;
+  --paper: #fdf3f2;
+  --surface: #fffafa;
+  --ink: #3b1e26;
+  --text: #6b4750;
+  --text-h: var(--ink);
+  --muted: #a5808a;
+  --border: #edcdcc;
+  --accent: #c0506a;
+  --accent-hover: #9f3b53;
+  --accent-soft: #f7d6d6;
+  --pastel: #efc6c4;
+  --highlight: #e79aa6;
+  --whatsapp: #1f9d55;
+  --whatsapp-hover: #18834a;
+  --radius: 20px;
+  --shadow: 0 1px 0 rgba(59, 30, 38, 0.06), 0 10px 24px -14px rgba(59, 30, 38, 0.35);
+
+  --sans: 'DM Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --hand: 'Caveat', 'Segoe Print', cursive;
+
+  font: 16px/1.5 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.2 0 0 0 0 0.27 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1,
+h2 {
+  color: var(--text-h);
+  font-family: var(--serif);
+  font-variation-settings: 'SOFT' 100;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--highlight);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
