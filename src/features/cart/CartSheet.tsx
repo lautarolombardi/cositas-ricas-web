@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import type { Product } from '../api.ts'
-import type { CartItem } from '../cart.ts'
-import { formatPrice } from '../format.ts'
-import { buildOrderMessage, buildWhatsAppUrl } from '../whatsapp.ts'
-import { QuantityStepper } from './QuantityStepper.tsx'
+import type { Product } from '../../api.ts'
+import { formatPrice } from '../../format.ts'
+import { QuantityStepper } from '../../components/QuantityStepper.tsx'
+import type { CartItem } from './useCart.ts'
+import { buildOrderMessage, buildWhatsAppUrl } from './whatsapp.ts'
 
 interface CartSheetProps {
   open: boolean

@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import type { Product } from '../api.ts'
-import { formatPrice } from '../format.ts'
+import type { Product } from '../../api.ts'
+import { QuantityStepper } from '../../components/QuantityStepper.tsx'
+import { formatPrice } from '../../format.ts'
 import { ProductPlaceholder } from './ProductPlaceholder.tsx'
-import { QuantityStepper } from './QuantityStepper.tsx'
 
 const PLACEHOLDER_TONES = ['rose', 'blush', 'peach', 'mauve'] as const
 

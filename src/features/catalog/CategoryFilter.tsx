@@ -1,4 +1,4 @@
-import type { Category } from '../api.ts'
+import type { Category } from '../../api.ts'
 
 interface CategoryFilterProps {
   categories: Category[]

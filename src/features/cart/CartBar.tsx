@@ -1,4 +1,4 @@
-import { formatPrice } from '../format.ts'
+import { formatPrice } from '../../format.ts'
 
 interface CartBarProps {
   totalQuantity: number

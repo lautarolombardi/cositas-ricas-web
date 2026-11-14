@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react'
-import type { Product } from './api.ts'
+import type { Product } from '../../api.ts'
 
 export interface CartItem {
   product: Product

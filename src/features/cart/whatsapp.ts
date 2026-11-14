@@ -1,5 +1,5 @@
-import type { CartItem } from './cart.ts'
-import { formatPrice } from './format.ts'
+import { formatPrice } from '../../format.ts'
+import type { CartItem } from './useCart.ts'
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER ?? ''
 
