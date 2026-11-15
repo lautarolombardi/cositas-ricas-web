@@ -263,6 +263,85 @@
   }
 }
 
+.product-image-button {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: zoom-in;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+}
+
+.product-lightbox {
+  width: min(92vw, 720px);
+  max-height: 90svh;
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: 18px;
+  background: transparent;
+  color: var(--text);
+  overflow: visible;
+
+  &::backdrop {
+    background: rgba(59, 30, 38, 0.7);
+    backdrop-filter: blur(3px);
+  }
+
+  &[open] {
+    animation: lightbox-in 0.2s ease-out;
+  }
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.product-lightbox-content {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.product-lightbox-content img {
+  display: block;
+  width: 100%;
+  max-height: min(78svh, 640px);
+  object-fit: contain;
+  background: var(--accent-soft);
+}
+
+.product-lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  background: rgba(255, 248, 246, 0.92);
+  box-shadow: 0 1px 4px rgba(59, 30, 38, 0.18);
+}
+
+.product-lightbox-caption {
+  margin: 0;
+  padding: 12px 16px 14px;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+}
+
 .product-badge {
   position: absolute;
   top: 8px;
@@ -273,6 +352,7 @@
   color: var(--paper);
   font-size: 0.8125rem;
   font-weight: 700;
+  pointer-events: none;
 }
 
 .product-body {

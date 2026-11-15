@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Product } from '../../api.ts'
 import { QuantityStepper } from '../../components/QuantityStepper.tsx'
 import { formatPrice } from '../../format.ts'
@@ -26,7 +26,16 @@ export function ProductCard({
   onRemove,
 }: ProductCardProps) {
   const [imageFailed, setImageFailed] = useState(false)
-  const showImage = product.imageUrl && !imageFailed
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const lightboxRef = useRef<HTMLDialogElement>(null)
+  const showImage = Boolean(product.imageUrl && !imageFailed)
+
+  useEffect(() => {
+    const dialog = lightboxRef.current
+    if (!dialog) return
+    if (lightboxOpen && !dialog.open) dialog.showModal()
+    if (!lightboxOpen && dialog.open) dialog.close()
+  }, [lightboxOpen])
 
   return (
     <article className={`product-card${quantity > 0 ? ' is-selected' : ''}`}>
@@ -35,12 +44,19 @@ export function ProductCard({
         data-tone={showImage ? undefined : placeholderTone(product.id)}
       >
         {showImage ? (
-          <img
-            src={product.imageUrl!}
-            alt={product.name}
-            loading="lazy"
-            onError={() => setImageFailed(true)}
-          />
+          <button
+            type="button"
+            className="product-image-button"
+            aria-label={`Ampliar imagen de ${product.name}`}
+            onClick={() => setLightboxOpen(true)}
+          >
+            <img
+              src={product.imageUrl!}
+              alt={product.name}
+              loading="lazy"
+              onError={() => setImageFailed(true)}
+            />
+          </button>
         ) : (
           <ProductPlaceholder categoryKey={product.category.key} />
         )}
@@ -69,6 +85,31 @@ export function ProductCard({
           )}
         </div>
       </div>
+
+      {showImage && (
+        <dialog
+          ref={lightboxRef}
+          className="product-lightbox"
+          aria-label={product.name}
+          onClose={() => setLightboxOpen(false)}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) setLightboxOpen(false)
+          }}
+        >
+          <div className="product-lightbox-content">
+            <button
+              type="button"
+              className="icon-button product-lightbox-close"
+              aria-label="Cerrar imagen"
+              onClick={() => setLightboxOpen(false)}
+            >
+              ✕
+            </button>
+            <img src={product.imageUrl!} alt={product.name} />
+            <p className="product-lightbox-caption">{product.name}</p>
+          </div>
+        </dialog>
+      )}
     </article>
   )
 }
