@@ -28,7 +28,8 @@ export function ProductCard({
   const [imageFailed, setImageFailed] = useState(false)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const lightboxRef = useRef<HTMLDialogElement>(null)
-  const showImage = Boolean(product.imageUrl && !imageFailed)
+  const imageUrl = product.images[0]?.url ?? null
+  const showImage = Boolean(imageUrl && !imageFailed)
 
   useEffect(() => {
     const dialog = lightboxRef.current
@@ -51,7 +52,7 @@ export function ProductCard({
             onClick={() => setLightboxOpen(true)}
           >
             <img
-              src={product.imageUrl!}
+              src={imageUrl!}
               alt={product.name}
               loading="lazy"
               onError={() => setImageFailed(true)}
@@ -105,7 +106,7 @@ export function ProductCard({
             >
               ✕
             </button>
-            <img src={product.imageUrl!} alt={product.name} />
+            <img src={imageUrl!} alt={product.name} />
             <p className="product-lightbox-caption">{product.name}</p>
           </div>
         </dialog>

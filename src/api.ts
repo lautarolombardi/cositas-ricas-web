@@ -4,10 +4,16 @@ export interface Category {
   name: string
 }
 
+export interface ProductImage {
+  id: string
+  url: string
+  position: number
+}
+
 export interface Product {
   id: string
   name: string
-  imageUrl: string | null
+  images: ProductImage[]
   description: string | null
   price: number
   category: Category
