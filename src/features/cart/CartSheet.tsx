@@ -107,7 +107,6 @@ export function CartSheet({
                 </span>
                 <textarea
                   rows={2}
-                  placeholder="Ej: sin cebolla, retiro a las 20 hs"
                   value={notes}
                   onChange={(event) => setNotes(event.target.value)}
                 />
